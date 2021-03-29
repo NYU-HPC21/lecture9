@@ -1,13 +1,13 @@
-$ cat run-R.sbatch
 #!/bin/bash
 
-#SBATCH --job-name=RTest
+#SBATCH --job-name=inner-prod
 #SBATCH --nodes=1 
-#SBATCH --cpus-per-task=1 
+#SBATCH --cpus-per-task=4
 #SBATCH --mem=2GB 
 #SBATCH --time=01:00:00 
+#SBATCH --verbose
 
 module purge 
-module load r/intel/4.0.3 
+module load  amber/openmpi/intel/20.06 
 
-mpirun -np 4 ...
+mpiexec ./inner
